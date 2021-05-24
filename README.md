@@ -1,7 +1,7 @@
 # Vue 3 + Typescript + Vite
 my git 地址：git@github.com:silin001/vite_todolist.git
 git remote add origin git@github.com:silin001/vite_todolist.git
-router + less
+router + less + axios封装
 
 This template should help get you started developing with Vue 3 and Typescript in Vite.
 

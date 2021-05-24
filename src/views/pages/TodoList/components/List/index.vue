@@ -1,8 +1,12 @@
 <template>
   <div class='list'>
     <ul className="todo-main">
-      666
-      <Item />
+      <Item v-for="(item,index) of todos"
+            :key="item.id"
+            :todo='item'
+            :index='index'
+            :del='del'
+            :updateTodo='updateTodo' />
     </ul>
   </div>
 </template>
@@ -13,6 +17,22 @@ import Item from '../Item/index.vue'
 interface DataProps { }
 export default {
   name: '',
+  props: {
+    todos: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    },
+    del: {
+      type: Function,
+      required: true //  必传
+    },
+    updateTodo: {
+      type: Function,
+      required: true //  必传
+    },
+  },
   components: {
     Item
   },

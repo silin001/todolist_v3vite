@@ -3,9 +3,13 @@
     <h1 @click="get">get</h1>
     <div class="todo-container">
       <div class="todo-wrap">
-        <Header />
-        <List />
-        <Footer />
+        <Header :add='add' />
+        <List :todos='todos'
+              :del='del'
+              :updateTodo='updateTodo' />
+        <Footer :todos='todos'
+                :checkAll='checkAll'
+                :clearAllCompletedTodos='clearAllCompletedTodos' />
       </div>
     </div>
   </div>
@@ -17,9 +21,8 @@ import { reactive, toRefs, onMounted } from 'vue'
 import { mokeGet } from '../../../api'
 import Header from './components/Header/index.vue'
 import Footer from './components/Footer/index.vue'
-// import Item from './components/Item/index.vue'
 import List from './components/List/index.vue'
-interface DataProps { }
+import { Todo } from '../../../types/todo'
 export default {
   name: '',
   components: {
@@ -28,20 +31,54 @@ export default {
     Footer
   },
   setup () {
-    const data: DataProps = reactive({
-
+    const state = reactive<{ todos: Todo[] }>({
+      todos: [
+        { id: 1, title: '测试1', isCompleted: false },
+        { id: 2, title: '敲代码', isCompleted: true },
+        { id: 3, title: '打游戏', isCompleted: false }
+      ]
     })
     onMounted(() => {
-      console.log('3.-组件挂载到页面之后执行-------onMounted')
+      // console.log('3.-组件挂载到页面之后执行-------onMounted')
     })
+    // add
+    const add = (todo: Todo) => {
+      state.todos.unshift(todo)
+    }
+
+    // 删除
+    const del = (index: number) => {
+      state.todos.splice(index, 1)
+    }
+    // 修改状态
+    const updateTodo = (todo: Todo, isCompleted: boolean) => {
+      todo.isCompleted = isCompleted
+      console.log(todo)
+    }
+    // 全选方法
+    const checkAll = (isCompleted: boolean) => {
+      state.todos.forEach((todo) => {
+        todo.isCompleted = isCompleted
+      })
+    }
+    // 清除所有已完成
+    const clearAllCompletedTodos = () => {
+      state.todos = state.todos.filter(item => !item.isCompleted)
+    }
+    // 接口测试
     const get = () => {
       mokeGet('/api/test', {}).then(res => {
         console.log(res)
       })
     }
     return {
-      ...toRefs(data),
-      get
+      ...toRefs(state),
+      get,
+      add,
+      del,
+      updateTodo,
+      checkAll,
+      clearAllCompletedTodos
     }
 
   }

@@ -1,29 +1,45 @@
 <template>
   <div class='header'>
     <div class="todo-header">
-      <!-- <input type="text"
-             placeholder="请输入你的任务名称，按回车键确认"
-             onKeyUp={this.handleKeyUp} /> -->
       <input type="text"
-             placeholder="请输入你的任务名称，按回车键确认" />
+             placeholder="请输入你的任务名称，按回车键确认"
+             v-model="title"
+             @keyup.enter="addTodo" />
     </div>
   </div>
 </template>
 
 <script lang='ts'>
-import { reactive, toRefs, onMounted } from 'vue'
+import { reactive, toRefs, ref } from 'vue'
 interface DataProps { }
 export default {
   name: 'header',
-  setup () {
-    const data: DataProps = reactive({
-
-    })
-    onMounted(() => {
-      console.log('3.-组件挂载到页面之后执行-------onMounted')
-    })
+  props: {
+    add: {
+      type: Function,
+      required: true //  必传
+    }
+  },
+  setup (props) {
+    const title = ref('')
+    const addTodo = () => {
+      // 获取文本框内容
+      const text = title.value
+      console.log(text)
+      if (!text.trim()) return
+      // 创建一个todo对象
+      const todo = {
+        id: Date.now(),
+        title: text,
+        isCompleted: false
+      }
+      // 通过setup 参数的props调用父级add方法
+      props.add(todo)
+      title.value = ''
+    }
     return {
-      ...toRefs(data),
+      title,
+      addTodo,
     }
 
   }
