@@ -1,27 +1,29 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/Home.vue'
+import index from '../views/index.vue'
+import Test from '../views/pages/Test/Test.vue'
+import TodoList from '../views/pages/TodoList/index.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
-    // children: [
-    //   {
-    //     path: '/add',
-    //     name: 'add',
-    //     component: () => import('../components/Add.vue')
-    //   },
-    //   {
-    //     path: '/delete',
-    //     name: 'delete',
-    //     component: () => import('../components/Delete.vue')
-    //   },
-    //   {
-    //     path: '/done',
-    //     name: 'done',
-    //     component: () => import('../components/Done.vue')
-    //   }
-    // ]
+    name: 'index',
+    component: index,
+    children: [
+      {
+        path: '/index/TodoList',
+        name: 'TodoList',
+        component: () => import('../views/pages/TodoList/index.vue')
+      },
+      {
+        path: '/index/Test',
+        name: 'Test',
+        component: () => import('../views/pages/Test/Test.vue')
+      }
+      // {
+      //   path: '/done',
+      //   name: 'done',
+      //   component: () => import('../components/Done.vue')
+      // }
+    ]
   }
 
 ]

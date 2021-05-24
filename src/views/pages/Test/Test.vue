@@ -1,6 +1,6 @@
 <template>
   <div class='templateBox'>
-    <h1>hello</h1>
+    <h1>test, hello vite</h1>
   </div>
 </template>
 
