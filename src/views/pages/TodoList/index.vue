@@ -1,6 +1,6 @@
 <template>
   <div class='todolist'>
-    <h1 @click="get">get</h1>
+    <p @click="testGet">testGet</p>
     <div class="todo-container">
       <div class="todo-wrap">
         <Header :add='add' />
@@ -16,13 +16,14 @@
 </template>
 
 <script lang='ts'>
-import { reactive, toRefs, onMounted } from 'vue'
+import { reactive, toRefs, onMounted, watch } from 'vue'
 // import { mokeGet } from "@/api"
 import { mokeGet } from '../../../api'
 import Header from './components/Header/index.vue'
 import Footer from './components/Footer/index.vue'
 import List from './components/List/index.vue'
 import { Todo } from '../../../types/todo'
+import { saveTodos, readTodos } from '../../../utils/localStorageUtils'
 export default {
   name: '',
   components: {
@@ -31,15 +32,21 @@ export default {
     Footer
   },
   setup () {
+    // const state = reactive<{ todos: Todo[] }>({
+    //   todos: [
+    //     { id: 1, title: '测试1', isCompleted: false },
+    //     { id: 2, title: '敲代码', isCompleted: true },
+    //     { id: 3, title: '打游戏', isCompleted: false }
+    //   ]
+    // })
     const state = reactive<{ todos: Todo[] }>({
-      todos: [
-        { id: 1, title: '测试1', isCompleted: false },
-        { id: 2, title: '敲代码', isCompleted: true },
-        { id: 3, title: '打游戏', isCompleted: false }
-      ]
+      todos: []
     })
+    // 初始化读取数据
     onMounted(() => {
-      // console.log('3.-组件挂载到页面之后执行-------onMounted')
+      setTimeout(() => {
+        state.todos = readTodos()
+      }, 1000)
     })
     // add
     const add = (todo: Todo) => {
@@ -65,15 +72,22 @@ export default {
     const clearAllCompletedTodos = () => {
       state.todos = state.todos.filter(item => !item.isCompleted)
     }
+    //监听todos数据变化
+    // watch(() => state.todos, (value) => {
+    //   saveTodos(value)
+    // }, { deep: true })
+    //监听todos数据变化-优化写法
+    watch(() => state.todos, saveTodos, { deep: true })
+
     // 接口测试
-    const get = () => {
+    const testGet = () => {
       mokeGet('/api/test', {}).then(res => {
         console.log(res)
       })
     }
     return {
       ...toRefs(state),
-      get,
+      testGet,
       add,
       del,
       updateTodo,
