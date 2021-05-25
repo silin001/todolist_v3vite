@@ -2,7 +2,7 @@
 import axios from "../http/axios"
 
 //get
-export const mokeGet = (url: string, params: any) => {
+export const mokeGet = (url: string, params: object) => {
  return axios({
   url,
   method: "get",
@@ -15,8 +15,21 @@ export const mokeGet = (url: string, params: any) => {
   }
  })
 }
+export const mokeGet2 = (url: string, params: object) => {
+ return axios({
+  url,
+  method: "gets",
+  params,
+  config: {
+   // headers: {
+   //  'Request-Type': 'wechat'
+   // },
+   // timeout: 5000
+  }
+ })
+}
 //post
-export const mokePost = (url: string, params: any) => {
+export const mokePost = (url: string, params: object) => {
  return axios({
   url,
   method: "post",

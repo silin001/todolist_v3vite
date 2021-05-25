@@ -18,7 +18,7 @@
 <script lang='ts'>
 import { reactive, toRefs, onMounted, watch } from 'vue'
 // import { mokeGet } from "@/api"
-import { mokeGet } from '../../../api'
+import { mokeGet, mokeGet2 } from '../../../api'
 import Header from './components/Header/index.vue'
 import Footer from './components/Footer/index.vue'
 import List from './components/List/index.vue'
@@ -81,7 +81,10 @@ export default {
 
     // 接口测试
     const testGet = () => {
-      mokeGet('/api/test', {}).then(res => {
+      // mokeGet('/api/test', {}).then(res => {
+      //   console.log(res)
+      // })
+      mokeGet2('/api/test', {}).then(res => {
         console.log(res)
       })
     }
