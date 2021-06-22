@@ -4,7 +4,6 @@
       <Item v-for="(item,index) of todos"
             :key="item.id"
             :todo='item'
-            :index='index'
             :del='del'
             :updateTodo='updateTodo' />
     </ul>

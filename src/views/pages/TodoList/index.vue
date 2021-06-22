@@ -54,13 +54,14 @@ export default {
     }
 
     // 删除
-    const del = (index: number) => {
-      state.todos.splice(index, 1)
+    const del = (id: number) => {
+      // state.todos.splice(id, 1)
+      state.todos = state.todos.filter(item => item.id !== id)
     }
     // 修改状态
     const updateTodo = (todo: Todo, isCompleted: boolean) => {
       todo.isCompleted = isCompleted
-      console.log(todo)
+      // console.log(todo)
     }
     // 全选方法
     const checkAll = (isCompleted: boolean) => {

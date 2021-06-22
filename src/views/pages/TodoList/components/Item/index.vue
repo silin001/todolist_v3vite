@@ -29,10 +29,6 @@ export default {
       type: Function,
       required: true
     },
-    index: {
-      type: Number,
-      required: true
-    },
     updateTodo: {
       type: Function,
       required: true
@@ -45,23 +41,23 @@ export default {
     }
   },
   setup (props) {
-    const { del, index } = props
+    const { del, todo } = props
     let isActive = ref(false)
     const onMouseHandler = (flag: boolean) => {
       isActive.value = flag
     }
     const delTodo = () => {
       if (window.confirm('确定删除吗？')) {
-        del(index)
+        del(todo.id)
       }
     }
     // 计算属性 实现获取 设置多选框
     const isCompleted = computed({
       get () {
-        return props.todo.isCompleted
+        return todo.isCompleted
       },
       set (val) {
-        props.updateTodo(props.todo, val)
+        props.updateTodo(todo, val)
       }
     })
     return {
