@@ -35,4 +35,33 @@ const axios = ({
   // return
  }
 }
-export default axios
+// get请求
+export const get = (url: string, params: object) => {
+ return axios({
+  url,
+  method: "get",
+  params,
+  config: {
+   // headers: {
+   //  'Request-Type': 'wechat'
+   // },
+   // timeout: 5000
+  }
+ })
+}
+
+//post请求
+export const post = (url: string, params: object) => {
+ return axios({
+  url,
+  method: "post",
+  params,
+  config: {
+   // headers: {
+   //  'Request-Type': 'wechat'
+   // },
+   // timeout: 5000
+  }
+ })
+}
+// export default axios

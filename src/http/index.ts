@@ -40,9 +40,6 @@ var instance = axios.create({
   }
 })
 
-
-
-
 let loading: any
 //正在请求的数量
 let requestCount = 0
