@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import index from '../views/index.vue'
-import Test from '../views/pages/Test/Test.vue'
-import TodoList from '../views/pages/TodoList/index.vue'
+// import Test from '../views/pages/Test/Test.vue'
+// import TodoList from '../views/pages/TodoList/index.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -17,6 +17,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/index/Test',
         name: 'Test',
         component: () => import('../views/pages/Test/Test.vue')
+      },
+      {
+        path: '/index/MockTest',
+        name: 'MockTest',
+        component: () => import('../views/pages/MockTest/MockTest.vue')
       }
       // {
       //   path: '/done',

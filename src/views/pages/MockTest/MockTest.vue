@@ -1,7 +1,6 @@
 <template>
-  <div class='Test'>
-    <h1>test, hello vite</h1>
-    <button @click="getData">get数据</button>
+  <div class='MockTest'>
+    <h2>hello mock</h2>
   </div>
 </template>
 
@@ -10,34 +9,30 @@ import { reactive, toRefs, onMounted } from 'vue'
 import { get } from '../../../http/axios'
 interface DataProps { }
 export default {
-  name: 'Test',
+  name: 'MockTest',
   setup () {
     const data: DataProps = reactive({
 
     })
     onMounted(() => {
-    })
-    const getData = () => {
-      get('/api/list', {}).then(res => {
+      get('/demo/demoList1/', {}).then(res => {
+        console.log(JSON.parse(JSON.stringify(res.data)))
+      })
+      get('/demo/demoList2/', {}).then(res => {
         console.log(res)
       })
-      // get('/api/test', {}).then(res => {
-      //   console.log(res)
-      // })
-    }
+      get('/user/list/', {}).then(res => {
+        console.log('usr:', res)
+      })
+    })
     return {
       ...toRefs(data),
-      getData
     }
 
   }
 };
 </script>
-
 <style scoped lang='less'>
-.Test {
-  h1 {
-    color: red;
-  }
+.MockTest {
 }
 </style>

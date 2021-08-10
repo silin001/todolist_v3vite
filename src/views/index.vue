@@ -13,6 +13,8 @@
                        to="/index/Test">test</router-link>
           <router-link class="list-group-item"
                        to="/index/TodoList">TodoList</router-link>
+          <router-link class="list-group-item"
+                       to="/index/MockTest">mockjs</router-link>
         </div>
       </div>
       <div class="col-xs-9">

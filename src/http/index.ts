@@ -23,22 +23,12 @@
 //  return res
 // }, err => console.log(err))
 
-// 创建axios实例
 import axios from 'axios'
 import {
   ElLoading,
   ElMessage
 } from 'element-plus'
-import 'element-plus/lib/theme-chalk/index.css'
-
-//  创建axios的一个实例
-var instance = axios.create({
-  // baseURL: import.meta.env.VITE_APP_URL, //接口统一域名
-  timeout: 8000, //设置超时
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8;',
-  }
-})
+// import 'element-plus/lib/theme-chalk/index.css'
 
 let loading: any
 //正在请求的数量
@@ -62,10 +52,19 @@ const hideLoading = () => {
   }
 }
 
-//请求拦截器 
-instance.interceptors.request.use((config) => {
-  console.log(config)
+// 0、创建axios的一个实例
+const axiosInstance = axios.create({
+  // baseURL: import.meta.env.VITE_APP_URL, //接口统一域名
+  timeout: 5000, //设置超时
+  headers: {
+    'Content-Type': 'application/json;charset=UTF-8;',
+  }
+})
+
+//1、请求拦截器
+axiosInstance.interceptors.request.use((config) => {
   showLoading()
+  // console.log('1请求前：拦截', config)
   // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
   const token = window.localStorage.getItem('token')
   token && (config.headers.Authorization = token)
@@ -73,22 +72,26 @@ instance.interceptors.request.use((config) => {
   if (config.method === 'POST') {
     config.data = JSON.stringify(config.data)
   }
-  return config;
-}, (error) =>
-  // 对请求错误做些什么
-  Promise.reject(error));
-
-//响应拦截器
-instance.interceptors.response.use((response) => {
-  hideLoading()
-  //响应成功
-  console.log('拦截器响应成功！')
-  return response.data
+  return config
 }, (error) => {
-  console.log('拦截器响应错误！', error)
-  //响应错误
-  if (error.response && error.response.status) {
-    const status = error.response.status
+  // 对请求错误做些什么
+  console.error('1请求拦截器错误', error)
+  Promise.reject(error)
+}
+)
+
+//2、响应拦截器
+axiosInstance.interceptors.response.use((res) => {
+  //响应成功
+  hideLoading()
+  // console.log('success-请求成功！', res)
+  return res.data
+}, (error) => {
+  // console.error('err-2、响应拦截错误！', error)
+  // console.log(error)
+  //响应错误时处理
+  if (error.response && error.response) {
+    const { status } = error.response
     let message = ''
     switch (status) {
       case 400:
@@ -125,10 +128,11 @@ instance.interceptors.response.use((response) => {
         message = '请求失败'
     }
     ElMessage.error(message)
-    return Promise.reject(error)
+    hideLoading()
+    // return Promise.reject(error)
   }
+  hideLoading()
   return Promise.reject(error)
 })
 
-
-export default instance
+export default axiosInstance
