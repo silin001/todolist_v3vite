@@ -22,13 +22,25 @@ const routes: Array<RouteRecordRaw> = [
         path: '/index/MockTest',
         name: 'MockTest',
         component: () => import('../views/pages/MockTest/MockTest.vue')
-      }
+      },
+      {
+        path: '/index/AdminProject',
+        name: 'AdminProject',
+        component: () => import('../views/pages/AdminProject/AdminProject.vue')
+      },
+
       // {
       //   path: '/done',
       //   name: 'done',
       //   component: () => import('../components/Done.vue')
       // }
     ]
+  },
+  // admin
+  {
+    path: '/adminLogin',
+    name: 'adminLogin',
+    component: () => import('../views/pages/AdminProject/login/login.vue')
   }
 
 ]

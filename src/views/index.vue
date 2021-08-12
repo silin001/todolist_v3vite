@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-08-12 21:59:07
+ * @LastEditTime: 2021-08-12 22:21:28
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \nodeServere:\web-kf\my-Demos\todolist_v3vite\src\views\index.vue
+-->
 <template>
   <div class="index">
     <h1>viteDemos</h1>
@@ -15,6 +23,8 @@
                        to="/index/TodoList">TodoList</router-link>
           <router-link class="list-group-item"
                        to="/index/MockTest">mockjs</router-link>
+          <router-link class="list-group-item"
+                       to="/index/AdminProject">element-plus后台管理</router-link>
         </div>
       </div>
       <div class="col-xs-9">
