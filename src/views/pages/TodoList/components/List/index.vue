@@ -40,7 +40,7 @@ export default {
 
     })
     onMounted(() => {
-      console.log('3.-组件挂载到页面之后执行-------onMounted')
+      // console.log('3.-组件挂载到页面之后执行-------onMounted')sss
     })
     return {
       ...toRefs(data),

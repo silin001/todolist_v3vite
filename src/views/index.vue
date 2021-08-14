@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-08-12 21:59:07
- * @LastEditTime: 2021-08-12 22:21:28
+ * @LastEditTime: 2021-08-14 10:37:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \nodeServere:\web-kf\my-Demos\todolist_v3vite\src\views\index.vue
@@ -24,7 +24,7 @@
           <router-link class="list-group-item"
                        to="/index/MockTest">mockjs</router-link>
           <router-link class="list-group-item"
-                       to="/index/AdminProject">element-plus后台管理</router-link>
+                       to="/index/ScriptSetup">script setup语法糖</router-link>
         </div>
       </div>
       <div class="col-xs-9">
@@ -48,7 +48,7 @@ export default {
 
     })
     onMounted(() => {
-      console.log('3.-组件挂载到页面之后执行-------onMounted')
+      // console.log('3.-组件挂载到页面之后执行-------onMounted')
     })
     return {
       ...toRefs(data),

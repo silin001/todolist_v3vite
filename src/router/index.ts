@@ -24,11 +24,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/pages/MockTest/MockTest.vue')
       },
       {
-        path: '/index/AdminProject',
-        name: 'AdminProject',
-        component: () => import('../views/pages/AdminProject/AdminProject.vue')
+        path: '/index/ScriptSetup',
+        name: 'ScriptSetup',
+        component: () => import('../views/pages/ApisGet/ScriptSetup.vue')
       },
-
       // {
       //   path: '/done',
       //   name: 'done',
@@ -36,11 +35,11 @@ const routes: Array<RouteRecordRaw> = [
       // }
     ]
   },
-  // admin
+  // 全局配置404页面
   {
-    path: '/adminLogin',
-    name: 'adminLogin',
-    component: () => import('../views/pages/AdminProject/login/login.vue')
+    path: '/:catchAll(.*)',
+    name: '404',
+    component: () => import('../views/pages/404.vue')
   }
 
 ]
