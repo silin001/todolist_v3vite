@@ -3,7 +3,9 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "strict": true,
+    // "strict": true, cls// 严格模式
+    "strict": false,
+    // "noImplicitAny": false,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
@@ -22,10 +24,15 @@
       ]
     },
   },
+  // 配置需要校验的文件
   "include": [
     "src/**/*.ts",
-    "src/**/*.d.ts",
+    // "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue"
+  ],
+  // 排除不需要 TypeScript 校验的文件
+  "exclude": [
+    "node_modules"
   ]
 }

@@ -18,7 +18,8 @@ import { ElButton, ElSelect } from 'element-plus';
 interface DataProps { }
 export default {
   name: 'Test',
-  setup () {
+  setup (props) {
+    console.log('🚀🚀 ~ file: Test.vue ~ line 22 ~ setup ~ props', props)
     const data: DataProps = reactive({
 
     })
