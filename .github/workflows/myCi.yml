@@ -18,8 +18,8 @@ jobs:
         persist-credentials: false
     - name: 安装和构建
       run: |
-        npm install
-        npm run build
+        yarn install
+        yarn build
     - name: 部署
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
