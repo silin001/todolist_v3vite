@@ -19,7 +19,6 @@ interface DataProps { }
 export default {
   name: 'Test',
   setup (props) {
-    console.log('🚀🚀 ~ file: Test.vue ~ line 22 ~ setup ~ props', props)
     const data: DataProps = reactive({
 
     })
