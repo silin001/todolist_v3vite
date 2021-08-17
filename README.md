@@ -3,6 +3,8 @@ my git 地址：git@github.com:silin001/vite_todolist.git
 git remote add origin git@github.com:silin001/vite_todolist.git
 router + less + axios封装
 # ps： 本项目inde.html 引入了bootstrap样式库 不建议写一下特制页面！
+# update
+# 8.17 配置github pages， 实现自动化部署， 访问地址：https://silin001.github.io/todolist_v3vite/
 This template should help get you started developing with Vue 3 and Typescript in Vite.
 
 ## Recommended IDE Setup
