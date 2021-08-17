@@ -20,7 +20,7 @@ jobs:
       run: |
         yarn install
         yarn build
-    - name: 部署
+    - name: Deploy
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
        #配置私钥，这里的 ACCESS_TOKEN 就是要我们github的 私钥 因为我的命名是 ACCESS_TOKEN ，所以这里这么写，如果有其他命名请自行更换， BRANCH 是配置部署的分支，我这里是部署到了 gh-pages 分支。
