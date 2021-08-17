@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-08-12 21:59:07
- * @LastEditTime: 2021-08-14 10:37:12
+ * @LastEditTime: 2021-08-16 17:17:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \nodeServere:\web-kf\my-Demos\todolist_v3vite\src\views\index.vue
@@ -25,6 +25,8 @@
                        to="/index/MockTest">mockjs</router-link>
           <router-link class="list-group-item"
                        to="/index/ScriptSetup">script setup语法糖</router-link>
+          <router-link class="list-group-item"
+                       to="/index/routerVuex">router&vuex</router-link>
         </div>
       </div>
       <div class="col-xs-9">
@@ -59,5 +61,9 @@ export default {
 </script>
 <style scoped lang='less'>
 .index {
+  // 路由全局配置了 选中添加class
+  .active {
+    color: red;
+  }
 }
 </style>

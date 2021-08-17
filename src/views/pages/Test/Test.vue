@@ -2,12 +2,19 @@
   <div class='Test'>
     <h1>test, hello vite</h1>
     <button @click="getData">get数据</button>
+
+    <el-button type="primary">主要按钮</el-button>
+    <div style="width:100px">
+      <el-input size="mini"></el-input>
+    </div>
+    <br>
   </div>
 </template>
 
 <script lang='ts'>
 import { reactive, toRefs, onMounted } from 'vue'
 import { get } from '../../../http/axios'
+import { ElButton, ElSelect } from 'element-plus';
 interface DataProps { }
 export default {
   name: 'Test',
@@ -27,7 +34,7 @@ export default {
     }
     return {
       ...toRefs(data),
-      getData
+      getData,
     }
 
   }

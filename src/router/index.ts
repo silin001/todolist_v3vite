@@ -28,6 +28,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'ScriptSetup',
         component: () => import('../views/pages/ApisGet/ScriptSetup.vue')
       },
+      {
+        path: '/index/RouterVuex',
+        name: 'RouterVuex',
+        component: () => import('../views/pages/ApisGet/RouterVuex.vue')
+      },
       // {
       //   path: '/done',
       //   name: 'done',
@@ -44,10 +49,11 @@ const routes: Array<RouteRecordRaw> = [
 
 ]
 
+// 工厂函数创建router实例
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHashHistory(), // 模式
   routes,
-  linkExactActiveClass: 'active'
+  linkExactActiveClass: 'active' // 选中样式
 })
 
 export default router
