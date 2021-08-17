@@ -15,7 +15,7 @@ jobs:
     # 使用actions库 actions/checkout获取源码
       uses: actions/checkout@main # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
       with:
-      : false
+        persist-credentials: false
     - name: 安装和构建
       run: |
         yarn install
