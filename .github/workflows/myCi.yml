@@ -40,13 +40,13 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    - name: 获取源码
       uses: actions/checkout@main
 
-    - name: Build and Deploy
+    - name: 打包和部署
       uses: JamesIves/github-pages-deploy-action@main
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: build
-        BUILD_SCRIPT: npm install && npm run build
+        FOLDER: dist
+        BUILD_SCRIPT: yarn && yarn build
