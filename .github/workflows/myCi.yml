@@ -31,7 +31,7 @@
 #         BUILD_SCRIPT: npm install && npm run build
 
 
-name: GitHub Actions Build and Deploy Demo
+name: GitHub Actions Build and Deploy Demo!
 on:
   push:
     branches:
