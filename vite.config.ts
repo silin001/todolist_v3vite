@@ -8,6 +8,7 @@ export default ({ mode }) => {
   return defineConfig({
     // publicPath: process.env.NODE_ENV === 'production' ? '/todolist_v3vite/' : '/',
     base: mode === 'production' ? '/todolist_v3vite/' : '/',
+    publicDir: mode === 'production' ? '/todolist_v3vite/' : '/',
     // 别名配置
     resolve: {
       alias: {
