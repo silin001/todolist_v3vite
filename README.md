@@ -4,7 +4,7 @@ git remote add origin git@github.com:silin001/vite_todolist.git
 router + less + axios封装
 # ps： 本项目inde.html 引入了bootstrap样式库 不建议写一下特制页面！
 打包时语法报错
-    "build": "vue-tsc --noEmit --skipLibCheck && vite build",
+    "build": "vue-tsc --noEmit --skipLibCheck && vite build"
 
 
 # update

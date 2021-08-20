@@ -1,5 +1,11 @@
 <template>
   <router-view></router-view>
+  <!-- keep-alive写法  目前vite好像无法运行 -->
+  <!-- <router-view v-slot='{Component}'>
+    <keep-alive>
+      <component :is='Compinent'></component>
+    </keep-alive>
+  </router-view> -->
 </template>
 
 <script lang="ts">
