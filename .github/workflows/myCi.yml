@@ -44,7 +44,7 @@ jobs:
       uses: actions/checkout@main
 
     - name: 打包和部署
-      uses: JamesIves/github-pages-deploy-action@main
+      uses: JamesIves/github-pages-deploy-action@4.1.4
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: main
