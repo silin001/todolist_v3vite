@@ -1,31 +1,52 @@
-name: 打包应用上传 GitHub Actions demo
-# 指定那个分支在push时触发
+# name: 打包应用上传 GitHub Actions demo
+# # 指定那个分支在push时触发
+# on:
+#   push:
+#     branches:
+#       - main
+# # --触发的任务列表
+# jobs:
+#   build-and-deploy:
+#   # build:
+#     runs-on: ubuntu-latest # 指定jobs运行需要的虚拟机环境（必填字段）
+#     # --任务步骤
+#     steps:
+#     - name: 迁出代码
+#     # 使用actions库 actions/checkout获取源码
+#       uses: actions/checkout@main # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+#       with:
+#         persist-credentials: false
+#     - name: 安装和构建
+#       run: |
+#         yarn install
+#         yarn build
+#     - name: 部署
+#       uses: JamesIves/github-pages-deploy-action@3.7.1
+#       env:
+#        #配置私钥，这里的 ACCESS_TOKEN 就是要我们github的 私钥 因为我的命名是 ACCESS_TOKEN ，所以这里这么写，如果有其他命名请自行更换， BRANCH 是配置部署的分支，我这里是部署到了 gh-pages 分支。
+#         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+#         # branch: gh-pages
+#         branch: main
+#         FOLDER: build
+#         BUILD_SCRIPT: npm install && npm run build
+
+
+name: GitHub Actions Build and Deploy Demo
 on:
   push:
     branches:
-      - main
-# --触发的任务列表
+    - main
 jobs:
   build-and-deploy:
-  # build:
-    runs-on: ubuntu-latest # 指定jobs运行需要的虚拟机环境（必填字段）
-    # --任务步骤
+    runs-on: ubuntu-latest
     steps:
-    - name: 迁出代码
-    # 使用actions库 actions/checkout获取源码
-      uses: actions/checkout@main # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
-      with:
-        persist-credentials: false
-    - name: 安装和构建
-      run: |
-        yarn install
-        yarn build
-    - name: 部署
-      uses: JamesIves/github-pages-deploy-action@3.7.1
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@main
       env:
-       #配置私钥，这里的 ACCESS_TOKEN 就是要我们github的 私钥 因为我的命名是 ACCESS_TOKEN ，所以这里这么写，如果有其他命名请自行更换， BRANCH 是配置部署的分支，我这里是部署到了 gh-pages 分支。
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        # branch: gh-pages
-        branch: main
+        BRANCH: gh-pages
         FOLDER: build
         BUILD_SCRIPT: npm install && npm run build
