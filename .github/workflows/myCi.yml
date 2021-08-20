@@ -47,6 +47,6 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@main
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: main
+        BRANCH: gh-pages
         FOLDER: dist
         BUILD_SCRIPT: yarn && yarn build
