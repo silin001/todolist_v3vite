@@ -5,10 +5,9 @@ import vue from '@vitejs/plugin-vue'
 import styleImport from 'vite-plugin-style-import'
 import path from 'path'
 export default ({ mode }) => {
-  const __DEV__ = mode === 'development'
   return defineConfig({
     // publicPath: process.env.NODE_ENV === 'production' ? '/todolist_v3vite/' : '/',
-    base: __DEV__ ? '/' : '/todolist_v3vite/',
+    base: mode === 'production' ? '/todolist_v3vite/' : '/',
     // 别名配置
     resolve: {
       alias: {
