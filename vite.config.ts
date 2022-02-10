@@ -7,12 +7,14 @@ import path from 'path'
 export default ({ mode }) => {
   return defineConfig({
     // publicPath: process.env.NODE_ENV === 'production' ? '/todolist_v3vite/' : '/',
-    base: mode === 'production' ? '/todolist_v3vite/' : '/',
+    base: mode === 'production' ? '/todolist-v3vite/' : '/',
     publicDir: mode === 'production' ? '/todolist_v3vite/' : '/',
     // 别名配置
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "src"),
+        "@mock": path.resolve(__dirname, "src/mock"),
+        "@piniaStore": path.resolve(__dirname, "src/piniaStore"),
         "components": path.resolve(__dirname, "src/components"),
         "styles": path.resolve(__dirname, "src/styles"),
         "views": path.resolve(__dirname, "src/views"),
@@ -37,7 +39,7 @@ export default ({ mode }) => {
       })
     ],
     server: {
-      port: 8090,
+      port: 3033,
       proxy: {
         '/api': {
           target: 'http://localhost:5000',

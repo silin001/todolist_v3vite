@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-08-12 21:59:07
- * @LastEditTime: 2021-08-18 14:10:21
+ * @LastEditTime: 2022-02-08 12:03:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \nodeServere:\web-kf\my-Demos\todolist_v3vite\src\views\index.vue
@@ -27,6 +27,8 @@
                        to="/index/ScriptSetup">script setup语法糖</router-link>
           <router-link class="list-group-item"
                        to="/index/routerVuex">router&vuex</router-link>
+          <router-link class="list-group-item"
+                       to="/index/pinia">pinia</router-link>
         </div>
       </div>
       <div class="col-xs-9">

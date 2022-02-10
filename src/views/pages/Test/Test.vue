@@ -30,6 +30,19 @@ export default {
   components: {
     Acomponent
   },
+  data () {
+    return {
+      num: 100
+    }
+  },
+  mounted () {
+    this.testV2()
+  },
+  methods: {
+    testV2 () {
+      console.log('vue3，methods里可以拿到this：', this.num)
+    }
+  },
   setup (props) {
     // 获取各个组件数据
     let { a, b, test } = TestFun()

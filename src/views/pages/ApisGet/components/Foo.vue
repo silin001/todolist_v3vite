@@ -22,7 +22,7 @@ const emit = defineEmit(['foo-click'])
 // 3、context 上下文，跟之前 setup第二个参数context一样。 expose方法用于导出实例  
 const ctx = useContext()  //----------3.2貌似已经弃用
 // 导出给组件具体实例, 不像之前ref获取到所有组件的实例！
-ctx.expose({
+ctx.expose({ //----------3.2貌似已经弃用
   test
 })
 console.log('🚀🚀 ~ file: foo.vue ~ line 23 ~ ctx', ctx)

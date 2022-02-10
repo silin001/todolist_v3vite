@@ -31,6 +31,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'RouterVuex',
         component: () => import('../views/pages/ApisGet/RouterVuex.vue')
       },
+      {
+        path: '/index/pinia',
+        name: 'Pinia',
+        component: () => import('../views/pages/Pinia/index.vue')
+      },
       // {
       //   path: '/done',
       //   name: 'done',
