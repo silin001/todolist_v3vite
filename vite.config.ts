@@ -2,13 +2,19 @@
 // https://vitejs.dev/config/
 import { defineConfig } from 'vite'  // defineConfig  配置智能提示
 import vue from '@vitejs/plugin-vue'
-import styleImport from 'vite-plugin-style-import'
+// import styleImport from 'vite-plugin-style-import'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import path from 'path'
 export default ({ mode }) => {
+  console.log('mode===', mode)
   return defineConfig({
-    // publicPath: process.env.NODE_ENV === 'production' ? '/todolist_v3vite/' : '/',
-    base: mode === 'production' ? '/todolist-v3vite/' : '/',
-    publicDir: mode === 'production' ? '/todolist_v3vite/' : '/',
+    // 部署服务器存放的子目录名称，也就是放 index.html 父目录
+    // base: './',
+    // base: '/v3p1/',
+    base: mode === 'production' ? '/v3p1/' : '/',
+    // publicDir: mode === 'production' ? '/v3p1/' : '/',
     // 别名配置
     resolve: {
       alias: {
@@ -25,27 +31,45 @@ export default ({ mode }) => {
     // 插件
     plugins: [
       vue(),// 以插件形式使用vue
-      styleImport({ // 按需加载ele-plus
-        libs: [{
-          libraryName: 'element-plus',
-          esModule: true,
-          resolveStyle: (name) => {
-            return `element-plus/lib/theme-chalk/${name}.css`;
-          },
-          resolveComponent: (name) => {
-            return `element-plus/lib/${name}`;
-          },
-        }]
-      })
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
+      // styleImport({ // 按需加载ele-plus- 打包会报错
+      //   libs: [{
+      //     libraryName: 'element-plus',
+      //     esModule: true,
+      //     resolveStyle: (name) => {
+      //       return `element-plus/theme-chalk/${name}.css`
+      //     },
+      //     resolveComponent: (name) => {
+      //       return `element-plus/lib/components/${name}`
+      //     },
+      //   }]
+      // })
     ],
+    build: {
+      outDir: 'distTest',
+      emptyOutDir: true
+    },
     server: {
       port: 3033,
+      // proxy只在本地开发环境生效
       proxy: {
-        '/api': {
-          target: 'http://localhost:5000',
+        '/myApi': {
+          // target: 'http://localhost:5000',
+          target: 'http://101.42.227.76:5000/', // my serves
           changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, '')
-        }
+          rewrite: path => path.replace(/^\/myApi/, '')
+        },
+        '/video': {
+          // target: 'http://yy.gxivs.cn:8048', // 测试
+          target: 'http://vgd.gxfsms.com:8666/', // 生产
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/video/, '/')
+        },
       }
     }
   })

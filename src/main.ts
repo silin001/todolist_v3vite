@@ -2,7 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import './mock/index' // 使用mock
+import components from './components'
+
 
 import { createPinia } from 'pinia'
 const pinia = createPinia()
@@ -13,7 +14,9 @@ const app = createApp(App)
 // app.use(ElButton)
 // app.use(ElSelect)
 // 2\插件形式使用
-import elementPlus from './plugins/elementPlus'
-app.use(elementPlus).use(pinia)
+// import elementPlus from './plugins/elementPlus'
+// console.log('🚀🚀 ~ file: main.ts ~ line 18 ~ elementPlus', elementPlus)
+// app.use(elementPlus)
+app.use(pinia).use(components)
 app.use(router).use(store)
 app.mount('#app')

@@ -1,0 +1,172 @@
+body,
+html,#app {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+
+}
+
+* {
+  // margin: 0 !important;
+  // padding: 0 !important;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 12px;
+}
+
+body {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  /* 滚动槽 */
+
+  ::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+    border-radius: 10px;
+    width: 10px;
+  }
+
+  /* 滚动条滑块 */
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #a0d2ff;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: #a0d2ff;
+  }
+}
+
+body {
+  //是否可以拖选
+  //user-select: none;
+}
+
+
+// 背景置灰
+.grey-root {
+  .grey {
+    filter: grayscale(100%);
+  }
+}
+
+.blur {
+  filter: blur(20px) opacity(50%);
+}
+
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+// name
+.name-font{
+  font-size: 20px;
+font-family: 'PingFang';
+font-weight: 400;
+color: #FFFFFF;
+}
+.value-font{
+font-size: 42px;
+font-family: 'DIN Alternate Bold';
+font-weight: bold;
+color: #FFC86E;
+}
+.unit-font{
+font-size: 18px;
+font-family: MicrosoftYaHei;
+color: #7FB9DB;
+}
+
+// padding
+.padding-0-5 {
+  padding: 0 5px;
+}
+
+.padding-0-10 {
+  padding: 0 10px;
+}
+
+.padding-0-20 {
+  padding: 0 20px;
+}
+
+.padding-0-30 {
+  padding: 0 30px;
+}
+.padding-0-40 {
+  padding: 0 40px;
+}
+
+.padding-10-0 {
+  padding: 10px 0;
+}
+
+.padding-20-0 {
+  padding: 20px 0;
+}
+
+.padding-30-0 {
+  padding: 30px 0;
+}
+
+.padding-right-20{
+  padding-right: 20px;
+}
+
+// 文字
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// 识别换行符
+.pre-wrap {
+  white-space: pre-wrap
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.mouse-pointer {
+  cursor: pointer;
+}
+
+// background
+.background-common {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.background-full {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+

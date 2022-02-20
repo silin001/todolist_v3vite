@@ -1,0 +1,149 @@
+@keyframes rotate-center {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* map点坐标自定义动画类----顺时针旋转（使用这个动画的时候才设置动画执行时间）*/
+@keyframes changeright{
+
+  0%{-webkit-transform:rotate(0deg);}
+
+  50%{-webkit-transform:rotate(180deg);}
+
+  100%{-webkit-transform:rotate(360deg);}
+}
+
+/*---------自定义普通旋转类（就是引用刚才自定义changeright的动画）------*/
+.imgrotate_common{
+  animation:changeright 6s linear infinite;
+}
+
+@-webkit-keyframes flipInY2 {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  //40% {
+  //  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+  //  transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+  //  -webkit-animation-timing-function: ease-in;
+  //  animation-timing-function: ease-in;
+  //}
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+
+  //80% {
+  //  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  //  transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  //}
+
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+
+@keyframes flipInY2 {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  //40% {
+  //  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+  //  transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+  //  -webkit-animation-timing-function: ease-in;
+  //  animation-timing-function: ease-in;
+  //}
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+
+  //80% {
+  //  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  //  transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  //}
+
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+
+.animate__flipInY {
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  -webkit-animation-name: flipInY2 !important;
+  animation-name: flipInY2 !important;
+}
+
+
+@-webkit-keyframes bounceOut2 {
+
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale3d(0, 0, 0);
+    transform: scale3d(0, 0, 0);
+  }
+  //  20% {
+  //    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+  //    transform: scale3d(0.9, 0.9, 0.9);
+  //  }
+  //
+  //  50%,
+  //  55% {
+  //    opacity: 1;
+  //    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+  //    transform: scale3d(1.1, 1.1, 1.1);
+  //  }
+  //
+  //  to {
+  //    opacity: 0;
+  //    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+  //    transform: scale3d(0.3, 0.3, 0.3);
+  //  }
+}
+
+@keyframes bounceOut2 {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale3d(0, 0, 0);
+    transform: scale3d(0, 0, 0);
+  }
+
+  //to {
+  //  opacity: 0;
+  //  -webkit-transform: scale3d(0.3, 0.3, 0.3);
+  //  transform: scale3d(0.3, 0.3, 0.3);
+  //}
+}

@@ -36,6 +36,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Pinia',
         component: () => import('../views/pages/Pinia/index.vue')
       },
+      {
+        path: '/index/httpTest',
+        name: 'httpTest',
+        component: () => import('../views/pages/httpTest/index.vue')
+      },
       // {
       //   path: '/done',
       //   name: 'done',
@@ -54,7 +59,7 @@ const routes: Array<RouteRecordRaw> = [
 
 // 工厂函数创建router实例
 const router = createRouter({
-  history: createWebHashHistory(), // 模式写法修改
+  history: createWebHashHistory(), // hash模式
   routes,
   linkExactActiveClass: 'active', // 选中样式
   // 记录页面位置 之前写法 x,y 变为 top left

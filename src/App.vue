@@ -1,5 +1,8 @@
 <template>
-  <router-view></router-view>
+  <div class="rootBox full">
+    <router-view></router-view>
+  </div>
+
   <!-- keep-alive写法  目前vite好像无法运行 -->
   <!-- <router-view v-slot='{Component}'>
     <keep-alive>
