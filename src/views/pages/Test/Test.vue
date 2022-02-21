@@ -46,7 +46,7 @@ export default {
   setup (props) {
     // 获取全局自定义属性
     const internalInstance = getCurrentInstance()
-    const $fetchDataFun = internalInstance.appContext.config.globalProperties.$fetchDataFun
+    const $fetchPostData = internalInstance.appContext.config.globalProperties.$fetchPostData
     // 获取各个组件数据
     let { a, b, test } = TestFun()
     const getData = () => {
@@ -57,23 +57,26 @@ export default {
       //   console.log(res)
       // })
     }
-
+    // 使用fetch测试第三方接口
     const fetchGetData = () => {
       const platNo = 'GDWISDOM'
       const __u__ = 'gdjg'
       const __s__ = '6cb02d133bea4b02aa2c9c788d673dcf' //  生产
+      // const formData = new FormData()
+      // formData.append('platNo', platNo)
+      //   URLSearchParams替代 FormData， FormData参数错误
+      const formData = new URLSearchParams()
+      formData.append('platNo', platNo)
       const params = {
         url: '/video/api/open/token/foreignGet',
-        data: {
-          platNo
-        },
+        data: formData,
         headers: {
           __u__,
           __s__,
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         }
       }
-      $fetchDataFun(params)
+      $fetchPostData(params)
         .then(data => {
           console.log('res====', data); // JSON data parsed by `data.json()` call
         })

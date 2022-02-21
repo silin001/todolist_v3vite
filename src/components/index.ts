@@ -1,6 +1,6 @@
 
 import styles from './css/index.less'
-import { fetchDataFun } from './fetch/index'
+import { fetchPostData } from './fetch/index'
 // import http from './http/axios'
 import '../mock/index'
 export default {
@@ -8,13 +8,7 @@ export default {
     console.log(app)
     app.use(styles)
     // app.use(http)
-    app.config.globalProperties.$fetchDataFun = fetchDataFun
+    app.config.globalProperties.$fetchPostData = fetchPostData
   }
 }
 
-// export default {
-//   install: (app, option) => {
-//     app.use(http, option.http)
-//     app.config.globalProperties.$util = util
-//   }
-// }

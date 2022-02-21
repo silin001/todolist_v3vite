@@ -118,7 +118,6 @@ export default {
       const url = '/video'
       // const url = 'http://vgd.gxfsms.com:8666/' //生产
       const videoConfig = await axios.post(url + '/api/open/token/foreignGet', formData, headers).then(res => res.data.code === 200 ? { token: res.data.data, url, platNo, headers } : false)
-      console.log('@@@', videoConfig)
       console.log(videoConfig.token)
       if (videoConfig)
         this.setVideoConfig(videoConfig)
@@ -136,7 +135,7 @@ export default {
     },
     setVideoConfig (data) {
       const { url, token, platNo, headers } = data
-      headers.headers['Content-type'] = 'application/json'
+      // headers.headers['Content-type'] = 'application/json'
       headers.headers['Authorization'] = token
       this.videoApiConfig = {
         url,
