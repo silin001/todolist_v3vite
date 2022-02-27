@@ -1,8 +1,17 @@
-/*
- * @Author: your name
- * @Date: 2021-10-17 20:38:40
- * @LastEditTime: 2021-10-17 20:38:41
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \zjd:\web_si\my_webDemo\vue3.x_ts\demo_project\todolist_v3vite\src\views\pages\Test\use\b.js
- */
+// 专门处理 b.vue的
+// hooks 写法 2  推荐
+import { reactive } from 'vue'
+function getData1 () {
+  const obj1 = reactive({
+    list: []
+  })
+  setTimeout(() => {
+    obj1.list = [1, 2, 3]
+  }, 1000)
+  return obj1
+}
+// ....todo
+
+export {
+  getData1
+}

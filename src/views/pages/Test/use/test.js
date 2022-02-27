@@ -26,13 +26,13 @@ export default function () {
     setTimeout(() => {
       const data = [
         {
-          name: '000si',
-          value: 0,
+          name: '改变后的值aaa',
+          value: 10,
           unit: '个'
         },
         {
-          name: '111',
-          value: 1,
+          name: '改变后的值bbb',
+          value: 20,
           unit: '个'
         }
       ]
@@ -45,12 +45,12 @@ export default function () {
     data.a = res
   }
   const getBData = (res) => data.b = res
-  const test = () => {
-    alert('111')
+  const testClick = () => {
+    alert('我是test.js的test方法')
   }
 
   return {
     ...toRefs(data),
-    test
+    testClick
   }
 }

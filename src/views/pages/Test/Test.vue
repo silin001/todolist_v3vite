@@ -1,29 +1,30 @@
 <template>
   <div class='Test'>
-    <h1>test, hello vite</h1>
-    <button @click="getData">get服务端数据</button>
-    <button @click="fetchGetData">fetch请求数据</button>
-    <el-button type="primary">主要按钮</el-button>
-    <div style="width:100px">
-      <el-input size="mini"></el-input>
-    </div>
+    <h2>test page</h2>
+    <button @click="getData">axios-get请求服务器数据</button>
+    <el-button type="primary"
+               @click="fetchGetData">fetch请求第三方数据</el-button>
     <br>
-    <!-- vue3.0  setup函数： 1、逻辑提取！  2、逻辑复用
+    <br>
+    <!-- vue3.0  hooks使用   setup函数： 1、逻辑提取！  2、逻辑复用
     抽离逻辑代码到一个函数，这个函数命令约定为useXXX格式（这点同React Hooks）
     -->
-    {{b}}
-    <p>vue3.0 setup函数： 1、逻辑提取！，2、逻辑复用</p>
-    <button @click="test">click test!</button>
-    <Acomponent :data='a' />
+    <h2>hooks使用：</h2>
+    <p>hooks b.js数据： {{obj1.list}}</p>
+
+    <br>
+    <p>test.js数据b: {{b}}</p>
+    <button @click="testClick">click test!</button>
+    <Acomponent :propData='a' />
   </div>
 </template>
 
 <script lang='ts'>
 import Acomponent from './components/a.vue'
 import TestFun from './use/test'
+import { getData1 } from './use/b'
 import { reactive, toRefs, onMounted, getCurrentInstance } from 'vue'
 import { get } from '../../../http/axios'
-import { ElButton, ElSelect } from 'element-plus';
 interface DataProps { }
 export default {
   name: 'Test',
@@ -35,20 +36,24 @@ export default {
       num: 100
     }
   },
-  mounted () {
-    this.testV2()
-  },
-  methods: {
-    testV2 () {
-      console.log('vue3，methods里可以拿到this：', this.num)
-    }
-  },
+  // mounted () {
+  //   this.testV2()
+  // },
+  // methods: {
+  //   testV2 () {
+  //     console.log('vue3，methods里可以拿到this：', this.num)
+  //   }
+  // },
   setup (props) {
-    // 获取全局自定义属性
+    // 获取绑定到全局的自定义属性
     const internalInstance = getCurrentInstance()
     const $fetchPostData = internalInstance.appContext.config.globalProperties.$fetchPostData
-    // 获取各个组件数据
-    let { a, b, test } = TestFun()
+    // hooks写法， 引入解构出变量和方法 直接return使用
+    // 逻辑由 test.js 处理，  这里只负责使用。
+    let { a, b, testClick } = TestFun()
+    let obj1 = getData1()
+
+
     const getData = () => {
       get('/myApi/list', {}).then(res => {
         console.log(res)
@@ -81,11 +86,13 @@ export default {
           console.log('res====', data); // JSON data parsed by `data.json()` call
         })
     }
+
     return {
+      obj1,
       getData,
       a,
       b,
-      test,
+      testClick,
       fetchGetData
     }
 

@@ -52,6 +52,7 @@ export default ({ mode }) => {
     ],
     build: {
       outDir: 'distTest',
+      // sourcemap: true,
       emptyOutDir: true
     },
     server: {
