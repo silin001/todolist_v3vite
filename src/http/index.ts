@@ -57,7 +57,7 @@ const axiosInstance = axios.create({
   // baseURL: import.meta.env.VITE_APP_URL, //接口统一域名
   timeout: 5000, //设置超时
   headers: {
-    'Content-Type': 'application/json;charset=UTF-8;',
+    'Content-Type': 'application/json;charset=UTF-8',// 结尾不要有分号;
   }
 })
 

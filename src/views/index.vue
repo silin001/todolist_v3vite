@@ -22,6 +22,8 @@
                          to="/index/pinia">pinia</router-link>
             <router-link class="list-group-item"
                          to="/index/httpTest">接口相关测试</router-link>
+            <router-link class="list-group-item"
+                         to="/index/Reptile">爬虫相关</router-link>
 
           </div>
         </el-aside>

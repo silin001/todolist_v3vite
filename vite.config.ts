@@ -2,13 +2,14 @@
 // https://vitejs.dev/config/
 import { defineConfig } from 'vite'  // defineConfig  配置智能提示
 import vue from '@vitejs/plugin-vue'
-// import styleImport from 'vite-plugin-style-import'
+import styleImport from 'vite-plugin-style-import' // 按需引入css 
+// 官网推荐自动引入组件（部分组件css好像不生效， 配合styleImport 使用）
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import path from 'path'
 export default ({ mode }) => {
-  console.log('mode===', mode)
+  console.log('mode=', mode)
   return defineConfig({
     // 部署服务器存放的子目录名称，也就是放 index.html 父目录
     // base: './',
@@ -37,18 +38,18 @@ export default ({ mode }) => {
       Components({
         resolvers: [ElementPlusResolver()],
       }),
-      // styleImport({ // 按需加载ele-plus- 打包会报错
-      //   libs: [{
-      //     libraryName: 'element-plus',
-      //     esModule: true,
-      //     resolveStyle: (name) => {
-      //       return `element-plus/theme-chalk/${name}.css`
-      //     },
-      //     resolveComponent: (name) => {
-      //       return `element-plus/lib/components/${name}`
-      //     },
-      //   }]
-      // })
+      styleImport({
+        libs: [{
+          libraryName: 'element-plus',
+          esModule: true,
+          resolveStyle: (name) => {
+            return `element-plus/theme-chalk/${name}.css`
+          },
+          // resolveComponent: (name) => {
+          //   return `element-plus/lib/components/${name}`
+          // },
+        }]
+      })
     ],
     build: {
       outDir: 'distTest',
@@ -60,8 +61,8 @@ export default ({ mode }) => {
       // proxy只在本地开发环境生效
       proxy: {
         '/myApi': {
-          // target: 'http://localhost:5000',
-          target: 'http://101.42.227.76:5000/', // my serves
+          target: 'http://localhost:5000',
+          // target: 'http://101.42.227.76:5000/', // my serves
           changeOrigin: true,
           rewrite: path => path.replace(/^\/myApi/, '')
         },

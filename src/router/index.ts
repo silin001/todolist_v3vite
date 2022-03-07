@@ -41,6 +41,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'httpTest',
         component: () => import('../views/pages/httpTest/index.vue')
       },
+      {
+        path: '/index/Reptile',
+        name: 'Reptile',
+        component: () => import('../views/pages/Reptile/index.vue')
+      },
       // {
       //   path: '/done',
       //   name: 'done',

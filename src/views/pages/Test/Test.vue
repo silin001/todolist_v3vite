@@ -2,6 +2,7 @@
   <div class='Test'>
     <h2>test page</h2>
     <button @click="getData">axios-get请求服务器数据</button>
+    <button @click="getData2">axios-post请求服务器数据</button>
     <el-button type="primary"
                @click="fetchGetData">fetch请求第三方数据</el-button>
     <br>
@@ -24,7 +25,7 @@ import Acomponent from './components/a.vue'
 import TestFun from './use/test'
 import { getData1 } from './use/b'
 import { reactive, toRefs, onMounted, getCurrentInstance } from 'vue'
-import { get } from '../../../http/axios'
+import { get, post } from '../../../http/axios'
 interface DataProps { }
 export default {
   name: 'Test',
@@ -62,6 +63,12 @@ export default {
       //   console.log(res)
       // })
     }
+    const getData2 = () => {
+      post('/myApi/postTest', { id: 111 }).then((res) => {
+        console.log(res)
+      })
+    }
+
     // 使用fetch测试第三方接口
     const fetchGetData = () => {
       const platNo = 'GDWISDOM'
@@ -90,6 +97,7 @@ export default {
     return {
       obj1,
       getData,
+      getData2,
       a,
       b,
       testClick,
