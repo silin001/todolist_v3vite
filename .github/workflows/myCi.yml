@@ -11,9 +11,9 @@ jobs: # 任务，一项或多项任务。
     # windows-latest，windows-2019或windows-2016
     # macOS-latest或macOS-10.14
 
-    strategy: #策略 配置16 14  12三个版本node 执行测试
-      matrix:
-        node-version: [16.x, 14.x, 12.x]
+#     strategy: #策略 配置16 14  12三个版本node 执行测试
+#       matrix:
+#         node-version: [16.x, 14.x, 12.x]
     steps: #步骤
     - name: 获取源码 #步骤1 下载源码到虚拟机
       uses: actions/checkout@v1 #  这个是github封装好的
