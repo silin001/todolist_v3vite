@@ -30,6 +30,5 @@ jobs: # 触发的任务列表
     - run: |
         # npm install
         # npm run build --if-persist
-        # npm testss
         echo: # 输出打印内容
           node -v
