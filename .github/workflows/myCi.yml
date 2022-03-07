@@ -27,7 +27,7 @@ jobs: # 触发的任务列表
         FOLDER: dist #打包后的文件夹名称
         # BUILD_SCRIPT: yarn && yarn build
         BUILD_SCRIPT: npm install && npm run build #打包
-    - run:
+    - run: |
         # npm install
         # npm run build --if-persist
         # npm testss
