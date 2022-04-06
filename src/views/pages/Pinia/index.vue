@@ -28,7 +28,7 @@ import { useProductsStore } from '@piniaStore/products'
 const mainStore = useMainStore()
 const productsStore = useProductsStore()
 const { count, name, array, fromatCount } = storeToRefs(mainStore) // 解构赋值
-const { all } = storeToRefs(productsStore)
+const { all } = storeToRefs(productsStore) // 解构赋值
 
 // 加载商品数据
 productsStore.loadAllProducts()

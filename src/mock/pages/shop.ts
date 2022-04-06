@@ -1,9 +1,11 @@
+// 定义接口导出
 export interface IProduct {
   id: number
   title: string
   price: number
   inventory: number
 }
+// 使用接口约束 _products 数组必须有那些字段
 const _products: IProduct[] = [
   {
     id: 1,

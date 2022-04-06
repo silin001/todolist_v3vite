@@ -76,7 +76,7 @@ const ruleFormRef = ref<FormInstance>()
 onMounted(() => {
 
 })
-// 用于dynamicValidateForm.fieldList 的接口 首字母大写
+// 用于 dynamicValidateForm.fieldList 的接口 首字母大写
 interface FieldItem {
   id: number
   value: string
