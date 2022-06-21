@@ -3,7 +3,7 @@
   <div class="index full">
     <el-container class="full">
       <el-header class="text-center">
-        <h2>viteDemos</h2>
+        <h4>demos</h4>
       </el-header>
       <el-container class="container full">
         <el-aside class="aside">

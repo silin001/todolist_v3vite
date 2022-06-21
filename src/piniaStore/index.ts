@@ -36,7 +36,7 @@ export const useMainStore = defineStore('main', {
     changeState (num: number) {
       // 可以使用this 访问状态
       this.count += num
-      this.name = "Elza"
+      this.name = "我是name"
       this.array.push('3')
       // this.$patch({
       // ...todo

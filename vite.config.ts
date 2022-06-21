@@ -2,8 +2,8 @@
 // https://vitejs.dev/config/
 import { defineConfig } from 'vite'  // defineConfig  配置智能提示
 import vue from '@vitejs/plugin-vue'
-import styleImport from 'vite-plugin-style-import' // 按需引入css 
-// 官网推荐自动引入组件（部分组件css好像不生效， 配合styleImport 使用）
+import styleImport from 'vite-plugin-style-import' // 按需引入css
+// 饿了么plus官网推荐自动引入组件（部分组件css好像不生效， 配合 styleImport插件 使用）
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -21,12 +21,13 @@ export default ({ mode }) => {
       alias: {
         "@": path.resolve(__dirname, "src"),
         "@mock": path.resolve(__dirname, "src/mock"),
+        "@http": path.resolve(__dirname, "src/http"),
         "@piniaStore": path.resolve(__dirname, "src/piniaStore"),
-        "components": path.resolve(__dirname, "src/components"),
-        "styles": path.resolve(__dirname, "src/styles"),
-        "views": path.resolve(__dirname, "src/views"),
-        "layouts": path.resolve(__dirname, "src/layouts"),
-        "utils": path.resolve(__dirname, "src/utils"),
+        "@components": path.resolve(__dirname, "src/components"),
+        "@styles": path.resolve(__dirname, "src/styles"),
+        "@views": path.resolve(__dirname, "src/views"),
+        "@layouts": path.resolve(__dirname, "src/layouts"),
+        "@utils": path.resolve(__dirname, "src/utils"),
       },
     },
     // 插件
@@ -47,7 +48,7 @@ export default ({ mode }) => {
           },
           // resolveComponent: (name) => {
           //   return `element-plus/lib/components/${name}`
-          // },
+          // }
         }]
       })
     ],
