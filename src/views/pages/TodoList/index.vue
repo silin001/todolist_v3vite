@@ -1,36 +1,36 @@
 <template>
-  <div class='todolist'>
-    <p @click="testGet">testGet</p>
+  <div class="todolist">
+    <!-- <p @click="testGet">testGet</p> -->
     <div class="todo-container">
       <div class="todo-wrap">
-        <Header :add='add' />
-        <List :todos='todos'
-              :del='del'
-              :updateTodo='updateTodo' />
-        <Footer :todos='todos'
-                :checkAll='checkAll'
-                :clearAllCompletedTodos='clearAllCompletedTodos' />
+        <Header :add="add" />
+        <List :todos="todos" :del="del" :updateTodo="updateTodo" />
+        <Footer
+          :todos="todos"
+          :checkAll="checkAll"
+          :clearAllCompletedTodos="clearAllCompletedTodos"
+        />
       </div>
     </div>
   </div>
 </template>
 
-<script lang='ts'>
-import { reactive, toRefs, onMounted, watch } from 'vue'
-import Header from './components/Header/index.vue'
-import Footer from './components/Footer/index.vue'
-import List from './components/List/index.vue'
-import { Todo } from '../../../types/todo'
-import { saveTodos, readTodos } from '../../../utils/localStorageUtils'
-import {get} from '../../../http/axios'
+<script lang="ts">
+import { reactive, toRefs, onMounted, watch } from "vue";
+import Header from "./components/Header/index.vue";
+import Footer from "./components/Footer/index.vue";
+import List from "./components/List/index.vue";
+import { Todo } from "../../../types/todo";
+import { saveTodos, readTodos } from "../../../utils/localStorageUtils";
+import { get } from "../../../http/axios";
 export default {
-  name: '',
+  name: "",
   components: {
     Header,
     List,
-    Footer
+    Footer,
   },
-  setup () {
+  setup() {
     // const state = reactive<{ todos: Todo[] }>({
     //   todos: [
     //     { id: 1, title: '测试1', isCompleted: false },
@@ -39,52 +39,52 @@ export default {
     //   ]
     // })
     const state = reactive<{ todos: Todo[] }>({
-      todos: []
-    })
+      todos: [],
+    });
     // 初始化读取数据
     onMounted(() => {
       setTimeout(() => {
-        state.todos = readTodos()
-      }, 1000)
-    })
+        state.todos = readTodos();
+      }, 1000);
+    });
     // add
     const add = (todo: Todo) => {
-      state.todos.unshift(todo)
-    }
+      state.todos.unshift(todo);
+    };
 
     // 删除
     const del = (id: number) => {
       // state.todos.splice(id, 1)
-      state.todos = state.todos.filter(item => item.id !== id)
-    }
+      state.todos = state.todos.filter((item) => item.id !== id);
+    };
     // 修改状态
     const updateTodo = (todo: Todo, isCompleted: boolean) => {
-      todo.isCompleted = isCompleted
+      todo.isCompleted = isCompleted;
       // console.log(todo)
-    }
+    };
     // 全选方法
     const checkAll = (isCompleted: boolean) => {
       state.todos.forEach((todo) => {
-        todo.isCompleted = isCompleted
-      })
-    }
+        todo.isCompleted = isCompleted;
+      });
+    };
     // 清除所有已完成
     const clearAllCompletedTodos = () => {
-      state.todos = state.todos.filter(item => !item.isCompleted)
-    }
+      state.todos = state.todos.filter((item) => !item.isCompleted);
+    };
     //监听todos数据变化
     // watch(() => state.todos, (value) => {
     //   saveTodos(value)
     // }, { deep: true })
     //监听todos数据变化-优化写法
-    watch(() => state.todos, saveTodos, { deep: true })
+    watch(() => state.todos, saveTodos, { deep: true });
 
     // 接口测试
     const testGet = () => {
-      get('/api/test', {}).then(res => {
-        console.log(res)
-      })
-    }
+      get("/api/test", {}).then((res) => {
+        console.log(res);
+      });
+    };
     return {
       ...toRefs(state),
       testGet,
@@ -92,13 +92,12 @@ export default {
       del,
       updateTodo,
       checkAll,
-      clearAllCompletedTodos
-    }
-
-  }
+      clearAllCompletedTodos,
+    };
+  },
 };
 </script>
-<style scoped lang='less'>
+<style scoped lang="less">
 .todolist {
   .btn {
     display: inline-block;
