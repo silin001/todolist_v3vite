@@ -14,16 +14,24 @@ jobs: # 触发的任务列表
     #   matrix:
     #     node-version: [16.x, 14.x, 12.x]
     steps: #步骤
-      - name: 获取源码 #------------------------------------步骤1 下载源码到虚拟机
-        uses: actions/checkout@v1 #  这个是github封装好的
-      - name: 打包和部署 #----------------------------------步骤2 打包部署
-        # uses: JamesIves/github-pages-deploy-action@master  #
-        uses: actions/setup-node@v1 # 当前虚拟机安装node
-        with: # 指定node版本 不指定使用默认版本
+      # 这一步就是检出你的仓库并下载里面的代码到runner中,actions/checkout@v2是官方自己造的轮子，直接拿来用就行
+      - name: action-获取源码
+        uses: actions/checkout@v2
+
+      # 打包构建
+      - name: action-打包
+        uses: actions/setup-node@master
+        with:
           node-version: "16.x"
-        env: #该步骤所需的环境变量。分别为： GitHub 密钥、发布分支、构建成果所在目录、构建脚本
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages #打包后需要部署的分支
-          FOLDER: dist #打包后的文件夹名称
-          # BUILD_SCRIPT: yarn && yarn build
-          BUILD_SCRIPT: npm install && npm run build #打包
+      - run: npm install # 安装依赖
+      - run: npm run build # 打包
+
+      # 部署到 GitHub pages
+      - name: action-部署
+        uses: peaceiris/actions-gh-pages@v3 # 使用部署到 GitHub pages 的 action
+        with:
+          publish_dir: ./dist # 部署打包后的 dist 目录
+          github_token: ${{ secrets.ACCESS_TOKEN }} # secret 名
+          # user_name: ${{ secrets.MY_USER_NAME }}
+          # user_email: ${{ secrets.MY_USER_EMAIL }}
+          commit_message: 自动部署 # 部署时的 git 提交信息，自由填写
