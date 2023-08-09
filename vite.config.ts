@@ -10,9 +10,9 @@ export default ({ mode }) => {
   console.log("mode=", mode);
   return defineConfig({
     // 部署服务器存放的子目录名称，也就是放 index.html 父目录
-    // base: './',
+    base: "./",
     // base: '/v3p1/',
-    base: mode === "production" ? "/v3p1/" : "/",
+    // base: mode === "production" ? "/v3p1/" : "/",
     // publicDir: mode === 'production' ? '/v3p1/' : '/',
     // 别名配置
     resolve: {
