@@ -1,4 +1,4 @@
-name: my-CICD!
+name: cicd测试
 on:
   push:
     branches:
@@ -14,16 +14,16 @@ jobs: # 触发的任务列表
     #   matrix:
     #     node-version: [16.x, 14.x, 12.x]
     steps: #步骤
-    - name: 获取源码 #步骤1 下载源码到虚拟机
+    - name: 获取源码 #------------------------------------步骤1 下载源码到虚拟机
       uses: actions/checkout@v1 #  这个是github封装好的
-    - name: 打包和部署 # 步骤2 打包部署
+    - name: 打包和部署 #----------------------------------步骤2 打包部署
       # uses: JamesIves/github-pages-deploy-action@master  #
       uses: actions/setup-node@v1 # 当前虚拟机安装node
       with: # 指定node版本 不指定使用默认版本
-        node-version: '14.x'
+        node-version: '16.x'
       env: #该步骤所需的环境变量。分别为： GitHub 密钥、发布分支、构建成果所在目录、构建脚本
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages #打包后的分支
+        BRANCH: gh-pages #打包后需要部署的分支
         FOLDER: dist #打包后的文件夹名称
         # BUILD_SCRIPT: yarn && yarn build
         BUILD_SCRIPT: npm install && npm run build #打包
