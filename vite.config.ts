@@ -53,7 +53,7 @@ export default ({ mode }) => {
       }),
     ],
     build: {
-      outDir: "distTest",
+      outDir: "dist",
       // sourcemap: true,
       emptyOutDir: true,
     },
