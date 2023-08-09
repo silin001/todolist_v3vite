@@ -6,7 +6,7 @@
     "build": "vite build",
     "serve": "vite preview"
   },
-  "homepage": "https://silin001.github.io/todolist_v3vite/",
+  "homepage": "https://silin001.github.io/todolist_v3vite",
   "dependencies": {
     "@types/node": "^16.6.1",
     "axios": "^0.21.1",
