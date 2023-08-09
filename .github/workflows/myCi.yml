@@ -16,7 +16,7 @@ jobs: # 触发的任务列表
     steps: #步骤
       # 获取源码 这一步是检出你的仓库并下载里面的代码到runner中,actions/checkout@v2是官方自己造的轮子，直接拿来用就行
       - name: action-获取源码
-        uses: actions/checkout@v2
+        uses: actions/checkout@latest # @latest 标签获取最新版
 
       # 打包构建
       - name: action-打包
