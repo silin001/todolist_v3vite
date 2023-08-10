@@ -1,37 +1,22 @@
-name: cicd测试
+name: todoList 自动部署
 on:
   push:
     branches:
-      - main #指定那个分支在push时触发
-jobs: # 触发的任务列表
-  job-1: # 任务1 （可多个任务）
-    #【必填字段】指定运行所需要的虚拟机环境目前可用的虚拟机如下。
+      - main
+jobs:
+  deploy:
     runs-on: ubuntu-latest
-    steps: #步骤
-      #步骤1 下载源码到虚拟机
-      - name: 获取源码
-        uses: actions/checkout@v3  # 这个是github上别人封装好的actions 直接使用
-      #步骤2  安装node并指定版本
-      - name: 安装node并指定版本
-        uses: actions/setup-node@v3 # 安装node
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: "16.x" # 指定node版本 不指定使用默认版本
-      # 步骤3 下载依赖、打包
-      - name: 构建及打包
-      # 多条命令执行 前面需要加 |
-        run: |
-          yarn install
-          yarn build
-      # 步骤4 部署到 GitHub pages（要部署到服务器的话这里需要修改）
-      - name: 部署到actions-gh-pages
-        # 使用peaceiris/actions-gh-pages@v3 这个是别人写好的actions 部署到 GitHub pages
+          node-version: 16.X
+      - run: npm install
+      - run: npm run build
+      - name: action-Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          publish_dir: ./dist # 部署打包后的 dist 目录
-          github_token: ${{ secrets.DEPLOY_SECRET }} #  secret 名称
-          commit_message: 自动部署(cicd) # 部署时的 git 提交信息，自由填写
-
-      - name: -----测试输出
-        run: |
-          node -v
-          echo '哈哈哈哈'
+          github_token: ${{ secrets.DEPLOY_SECRET }}
+          BRANCH: gh-pages
+          publish_dir: ./dist
+          commit_message: 简化版-自动部署(cicd) # 部署时的 git 提交信息，自由填写
