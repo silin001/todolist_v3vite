@@ -1,5 +1,5 @@
 <template>
-  <div class="rootBox full">
+  <div class="rootBox">
     <router-view></router-view>
   </div>
 </template>
@@ -12,4 +12,9 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style scoped lang="less">
+.rootBox{
+  width: 100%;
+  height: 100%;
+}
+</style>

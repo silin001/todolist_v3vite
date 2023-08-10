@@ -1,12 +1,12 @@
 {
   "name": "my-vite-todolist",
   "version": "0.0.0",
+  "homepage": "https://silin001.github.io/todolist_v3vite",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
-  "homepage": "https://silin001.github.io/todolist_v3vite",
   "dependencies": {
     "@types/node": "^16.6.1",
     "axios": "^0.21.1",

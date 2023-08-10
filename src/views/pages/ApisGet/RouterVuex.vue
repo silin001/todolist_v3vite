@@ -2,11 +2,11 @@
   <div class='routerVuex'
        style="height:1000px;">
     <NavLink to='/'
-             :title="123"></NavLink>
+             :title="'标题参数'"></NavLink>
     <button @click="goPage">新页面跳转</button>
     <button @click="back">返回页面</button>
     <br>
-    <button @click="add">获取store数据可以点击:{{$store.state.num}}</button>
+    <button @click="add">点击，store数据++ {{$store.state.num}}</button>
   </div>
 </template>
 
@@ -40,12 +40,12 @@ export default {
       console.log(query)
     })
     // 路由守卫-离开之前
-    onBeforeRouteLeave((to, from) => {
-      const answer = window.confirm('确定离开此页面吗？')
-      if (!answer) {
-        return false
-      }
-    })
+    // onBeforeRouteLeave((to, from) => {
+    //   const answer = window.confirm('确定离开此页面吗？')
+    //   if (!answer) {
+    //     return false
+    //   }
+    // })
     const back = () => {
       router.push('/')
     }
@@ -64,7 +64,7 @@ export default {
     console.log(num())
     // 改变store 状态数据
     const add = () => {
-      store.dispatch('syncaddnum', 1)
+      store.dispatch('asyncAddNum', 1)
 
     }
     return {

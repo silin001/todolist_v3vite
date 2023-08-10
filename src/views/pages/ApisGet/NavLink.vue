@@ -1,7 +1,7 @@
 <template>
   <div class='navLink'
        :class="{'active': isActive}">
-    {{route.name}}+ {{title}}
+    展示route名称+props 标题参数： {{route.name}}+ {{title}}
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
 </script>
 <style scoped lang='less'>
 .active {
-  background: red;
+  // background: red;
 }
 .navLink {
 }

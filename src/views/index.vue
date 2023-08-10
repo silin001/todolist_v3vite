@@ -1,38 +1,28 @@
 <template>
-  <div class="index full">
-    <el-container class="full">
-      <el-header class="text-center">
-        <h4>demos</h4>
-      </el-header>
-      <el-container class="container full">
+  <div class="index">
+      <el-container class="container">
         <el-aside class="aside">
           <div class="list-group">
-            <router-link class="list-group-item" to="/index/TodoList"
+            <router-link class="list-group-item" to="/TodoList"
               >TodoList</router-link
             >
             <router-link class="list-group-item" to="/index/Test"
               >test</router-link
             >
-
-            <router-link class="list-group-item" to="/index/ScriptSetup"
-              >script setup语法糖</router-link
-            >
             <router-link class="list-group-item" to="/index/routerVuex"
-              >router&vuex</router-link
+              >vue3使用router&vuex</router-link
             >
-
-            <!-- <router-link class="list-group-item" to="/index/Reptile"
-              >爬虫相关</router-link
+            <!-- <router-link class="list-group-item" to="/index/ScriptSetup"
+              >script setup语法糖</router-link
             > -->
           </div>
         </el-aside>
         <el-main>
-          <div class="rightBox full">
+          <div class="rightBox">
             <router-view></router-view>
           </div>
         </el-main>
       </el-container>
-    </el-container>
   </div>
 </template>
 
@@ -52,14 +42,22 @@ export default {
 </script>
 <style scoped lang="less">
 .index {
+    width: 100%;
+    height: 100%;
   // 路由全局配置了 选中添加class
+
   .active {
     color: red;
   }
   .container {
-    height: calc(100% - 60px);
+    width: 70%;
+    margin: 5% auto;
+    // height: 80%;
     .aside {
       width: 200px;
+    }
+    .rightBox{
+      // border: 1px solid;
     }
   }
 }

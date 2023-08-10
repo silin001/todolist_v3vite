@@ -27,7 +27,6 @@ import { ref, reactive, toRefs, onMounted } from "vue";
 // ]);
 
 import Foo from "./components/Foo.vue";
-// interface DataProps { }
 /*
 script setip 写法
 组件无需注册、变量数据无需return 就可以直接在tempalte使用
@@ -53,9 +52,6 @@ const getFoo = () => {
 //   })
 // }
 // const post = await p()
-// console.log('🚀🚀 ~ file: ScriptSetup.vue ~ line 31 ~ post', post)
 </script>
 <style scoped lang="less">
-.ScriptSetup {
-}
 </style>

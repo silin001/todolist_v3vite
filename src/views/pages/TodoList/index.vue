@@ -1,6 +1,5 @@
 <template>
   <div class="todolist">
-    <!-- <p @click="testGet">testGet</p> -->
     <div class="todo-container">
       <div class="todo-wrap">
         <Header :add="add" />
@@ -129,7 +128,7 @@ export default {
   }
 
   .todo-container {
-    width: 600px;
+    // width: 600px;
     margin: 0 auto;
   }
   .todo-container .todo-wrap {

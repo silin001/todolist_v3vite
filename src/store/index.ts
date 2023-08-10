@@ -19,8 +19,7 @@ const store = createStore({
     asyncAddNum ({ commit }, data) {
       setTimeout(() => {
         commit('add', data)
-        console.log(data)
-      }, 1000)
+      }, 200)
     },
     asyncGetUserInfo ({ commit }) {
       setTimeout(() => {

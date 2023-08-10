@@ -5,10 +5,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "index",
     component: index,
-    redirect: "/index/TodoList",
+    redirect: "/TodoList",
     children: [
       {
-        path: "/index/TodoList",
+        path: "/TodoList",
         name: "TodoList",
         component: () => import("../views/pages/TodoList/index.vue"),
       },

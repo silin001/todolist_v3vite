@@ -1,5 +1,4 @@
-<template inherit-attrs="false">
-  <!-- inheritAttrs  不允许添加任何属性  貌似不生效-->
+<template >
   <div class="templateBox">
     <h2>foo子组件</h2>
     <div>props:{{ title }}</div>
@@ -7,9 +6,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted, defineProps, defineEmits } from "vue";
-const test = ref("hello");
-// 1、props使用 defineProps函数
+import { ref, onMounted } from "vue";
+// const test = ref("hello");
+// 1、props使用 defineProps函数（不需要导入）
 // 写法1
 // const props = defineProps({
 //   title: Number
@@ -20,7 +19,7 @@ console.log("🚀🚀 ~ file: foo.vue ~ line 17 ~ props", props);
 //2、发送emit 使用 defineEmits
 const emit = defineEmits(["foo-click"]);
 // 3、context 上下文，跟之前 setup第二个参数context一样。 expose方法用于导出实例
-// const ctx = useContext()  //----------3.2已经弃用
+// const ctx = useContext()  //----------3.2已经弃用--------------
 // 导出给组件具体实例, 不像之前ref获取到所有组件的实例！
 // ctx.expose({
 //   test
