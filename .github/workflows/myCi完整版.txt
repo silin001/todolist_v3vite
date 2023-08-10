@@ -1,0 +1,40 @@
+name: my blog 自动部署
+on:
+  push:
+    branches:
+      - main #指定那个分支在push时触发
+jobs: # 触发的任务列表
+  # my-build-and-deploy: # 任务1 （可以多个任务）
+  job1: # 任务1 （可以多个任务）
+    runs-on: ubuntu-latest #字段指定运行所需要的虚拟机环境。它是必填字段。目前可用的虚拟机如下。
+    # ubuntu-latest，ubuntu-18.04或ubuntu-16.04
+    # windows-latest，windows-2019或windows-2016
+    # macOS-latest或macOS-10.14
+    # strategy: #策略 配置16  14  12三个版本node 执行测试
+    #   matrix:
+    #     node-version: [16.x, 14.x, 12.x]
+    steps: #步骤
+      # 获取源码 这一步是检出你的仓库并下载里面的代码到runner中,actions/checkout@v2是官方自己造的轮子，直接拿来用就行
+      - name: action-获取源码
+        uses: actions/checkout@v3 # @v3 版本
+
+      # 打包构建
+      - name: action-打包
+        uses: actions/setup-node@master
+        with: # 这里相当于传递给上面指令的参数，告诉他使用 node 16 以上版本
+          node-version: "16.x" #指定node版本
+      - run: yarn # 安装依赖
+      - run: yarn build # 打包
+      # - run: npm install # 安装依赖
+      # - run: npm run build # 打包
+
+      # 部署到 GitHub pages
+      - name: action-部署
+        # 使用peaceiris/actions-gh-pages@v3 部署到 GitHub pages 的 action
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./dist # 部署打包后的 dist 目录
+          github_token: ${{ secrets.DEPLOY_SECRET }} # secret 名
+          # user_name: ${{ secrets.MY_USER_NAME }}
+          # user_email: ${{ secrets.MY_USER_EMAIL }}
+          commit_message: 自动部署(cicd) # 部署时的 git 提交信息，自由填写
