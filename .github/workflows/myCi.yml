@@ -17,7 +17,7 @@ jobs: # 触发的任务列表
         with: # 指定node版本 不指定使用默认版本
           node-version: "16.x"
       # 步骤3 下载依赖、打包
-      - name: 下载依赖打包
+      - name: 构建及打包
           run: |
             yarn install
             yarn build
