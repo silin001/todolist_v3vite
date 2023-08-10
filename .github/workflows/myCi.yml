@@ -18,9 +18,9 @@ jobs: # 触发的任务列表
           node-version: "16.x"
       # 步骤3 下载依赖、打包
       - name: 构建及打包
-          run: |
-            yarn install
-            yarn build
+        run: |
+          yarn install
+          yarn build
       # 部署到 GitHub pages、要部署到服务器的话这里需要修改。
       - name: 部署到actions-gh-pages
         # 使用peaceiris/actions-gh-pages@v3 部署到 GitHub pages 的 action
