@@ -8,22 +8,32 @@ jobs: # 触发的任务列表
   job1: # 任务1 （可以多个任务）
     runs-on: ubuntu-latest #字段指定运行所需要的虚拟机环境。它是必填字段。目前可用的虚拟机如下。
     steps: #步骤
-      - name: 获取源码 #------------------------------------步骤1 下载源码到虚拟机
-        uses: actions/checkout@v3 #  这个是github封装好的actions
-      - name: 打包和部署 #----------------------------------步骤2 打包并且部署
-        uses: JamesIves/github-pages-deploy-action@master 
-        # uses: actions/setup-node@v3 # 当前虚拟机安装node
+      #步骤1 下载源码到虚拟机
+      - name: 获取源码
+        uses: actions/checkout@v3  # 这个是github上别人封装好的actions 直接使用
+      #步骤2  安装node并且指定版本
+      - name: 安装node并且指定版本
+        uses: actions/setup-node@v3
         with: # 指定node版本 不指定使用默认版本
           node-version: "16.x"
-        env: #该步骤所需的环境变量。分别为： GitHub 密钥、发布分支、构建成果所在目录、构建脚本
-          ACCESS_TOKEN: ${{ secrets.DEPLOY_SECRET }}
-          BRANCH: gh-pages #打包后需要部署的分支
-          FOLDER: dist #打包后的文件夹名称
-          BUILD_SCRIPT: yarn && yarn build
-          # BUILD_SCRIPT: npm install && npm run build #打包
+      # 步骤3 下载依赖、打包
+      - name: 下载依赖打包
+          run: |
+            yarn install
+            yarn build
+      # 部署到 GitHub pages、要部署到服务器的话这里需要修改。
+      - name: 部署到actions-gh-pages
+        # 使用peaceiris/actions-gh-pages@v3 部署到 GitHub pages 的 action
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./dist # 部署打包后的 dist 目录
+          github_token: ${{ secrets.DEPLOY_SECRET }} # secret 名称
+          commit_message: 自动部署(cicd) # 部署时的 git 提交信息，自由填写
+
       - name: 测试查看node版本
         run: |
           node -v
+          echo '哈哈哈哈'
       # - run: |
       #     npm install
       #     npm run build --if-persist
