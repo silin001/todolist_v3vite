@@ -1,23 +1,31 @@
-name: todoList 自动部署
+name: cicd测试
 on:
   push:
     branches:
-      - main
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8.6.2
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.X
-      - run: npm install
-      - run: npm run build
-      - name: action-Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.DEPLOY_SECRET }}
-          publish_dir: ./dist
+      - main #指定那个分支在push时触发
+jobs: # 触发的任务列表
+  # my-build-and-deploy: # 任务1 （可以多个任务）
+  job1: # 任务1 （可以多个任务）
+    runs-on: ubuntu-latest #字段指定运行所需要的虚拟机环境。它是必填字段。目前可用的虚拟机如下。
+    steps: #步骤
+      - name: 获取源码 #------------------------------------步骤1 下载源码到虚拟机
+        uses: actions/checkout@v1 #  这个是github封装好的
+      - name: 打包和部署 #----------------------------------步骤2 打包并且部署
+        # uses: JamesIves/github-pages-deploy-action@master  #
+        uses: actions/setup-node@v1 # 当前虚拟机安装node
+        with: # 指定node版本 不指定使用默认版本
+          node-version: "16.x"
+        env: #该步骤所需的环境变量。分别为： GitHub 密钥、发布分支、构建成果所在目录、构建脚本
+          ACCESS_TOKEN: ${{ secrets.DEPLOY_SECRET }}
+          BRANCH: gh-pages #打包后需要部署的分支
+          FOLDER: dist #打包后的文件夹名称
+          BUILD_SCRIPT: yarn && yarn build
+          # BUILD_SCRIPT: npm install && npm run build #打包
+      - name: 测试一下输出
+      - run:
+        echo: node -v
+      # - run: |
+      #     npm install
+      #     npm run build --if-persist
+      #     echo:
+      #       node -v
