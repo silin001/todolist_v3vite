@@ -11,8 +11,8 @@ jobs: # 触发的任务列表
       - name: 获取源码 #------------------------------------步骤1 下载源码到虚拟机
         uses: actions/checkout@v3 #  这个是github封装好的actions
       - name: 打包和部署 #----------------------------------步骤2 打包并且部署
-        # uses: JamesIves/github-pages-deploy-action@master  #
-        uses: actions/setup-node@v3 # 当前虚拟机安装node
+        uses: JamesIves/github-pages-deploy-action@master 
+        # uses: actions/setup-node@v3 # 当前虚拟机安装node
         with: # 指定node版本 不指定使用默认版本
           node-version: "16.x"
         env: #该步骤所需的环境变量。分别为： GitHub 密钥、发布分支、构建成果所在目录、构建脚本
@@ -21,9 +21,9 @@ jobs: # 触发的任务列表
           FOLDER: dist #打包后的文件夹名称
           BUILD_SCRIPT: yarn && yarn build
           # BUILD_SCRIPT: npm install && npm run build #打包
-      - name: 测试一下输出
+      - name: 测试查看node版本
         run: |
-          echo node -v
+          node -v
       # - run: |
       #     npm install
       #     npm run build --if-persist
