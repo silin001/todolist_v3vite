@@ -16,7 +16,7 @@ jobs:
       - name: action-Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.DEPLOY_SECRET }}
+          github_token: ${{ secrets.CICD_ACCESS_TOKEN }}
           BRANCH: gh-pages
           publish_dir: ./dist
           commit_message: 简化版-自动部署(cicd) # 部署时的 git 提交信息，自由填写
